@@ -7,8 +7,8 @@ class Solution {
         int max = 0;
         for( int i=0;i<nums.length;i++){
             if(map.containsKey(nums[i]+1)){
-                int len = map.get(nums[i]) + map.get(nums[i]+1);
-                max = Math.max(len, max);
+                // int len = map.get(nums[i]) + map.get(nums[i]+1);
+                max = Math.max(map.get(nums[i]) + map.get(nums[i]+1), max);
             }
         }
         return max;
