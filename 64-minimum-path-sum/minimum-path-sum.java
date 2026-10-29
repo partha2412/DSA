@@ -2,21 +2,23 @@
 import java.util.Arrays;
 
 class Solution {
+     int[][] dp;
+     int m;
+     int n;
     public int minPathSum(int[][] grid) {
-        int n = grid[0].length;
-        int m = grid.length;
+        n = grid[0].length;
+        m = grid.length;
 
-        int[][] dp = new int[m][n];
+        dp = new int[m][n];
 
         for (int[] row : dp) {
             Arrays.fill(row, -1);
         }
 
-        return helper(grid, 0, 0, m, n, dp);
+        return helper(grid, 0, 0);
     }
 
-    private int helper(int[][] grid, int x, int y,
-                       int m, int n, int[][] dp) {
+    private int helper(int[][] grid, int x, int y) {
 
         if (x == m - 1 && y == n - 1) {
             return grid[x][y];
@@ -29,14 +31,14 @@ class Solution {
 
         if (x == m - 1) {
             dp[x][y] = grid[x][y]
-                    + helper(grid, x, y + 1, m, n, dp);
+                    + helper(grid, x, y + 1);
         } else if (y == n - 1) {
             dp[x][y] = grid[x][y]
-                    + helper(grid, x + 1, y, m, n, dp);
+                    + helper(grid, x + 1, y);
         } else {
             dp[x][y] = grid[x][y] + Math.min(
-                    helper(grid, x, y + 1, m, n, dp),
-                    helper(grid, x + 1, y, m, n, dp)
+                    helper(grid, x, y + 1),
+                    helper(grid, x + 1, y)
             );
         }
 
