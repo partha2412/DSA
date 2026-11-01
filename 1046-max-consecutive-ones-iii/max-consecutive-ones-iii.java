@@ -18,31 +18,37 @@ class Solution {
 
     //     return max_l;
     // }
-
-
-
-
-
-
-
-
-
-
-
-    public int longestOnes(int[] nums, int k){
-        int maxLen = 0;
-        int l = 0;
-        int count = 0;
-        for(int r=0;r<nums.length;r++) {
+    public int longestOnes(int[] nums, int k) {
+        int l=0;
+        int len = 0;
+        int c = 0;
+        for(int r=0;r<nums.length;r++){
             if(nums[r]==0)
-                count++;
-            while(count>k) {
+                c++;
+            while(c>k){
                 if(nums[l]==0)
-                    count--;
+                    c--;
                 l++;
             }
-            maxLen=Math.max(r-l+1, maxLen);
+            len = Math.max(r-l+1,len);
         }
-        return maxLen;
+        return len;
     }
+
+    // public int longestOnes(int[] nums, int k) {
+    //     int maxLen = 0;
+    //     int l = 0;
+    //     int count = 0;
+    //     for (int r = 0; r < nums.length; r++) {
+    //         if (nums[r] == 0)
+    //             count++;
+    //         while (count > k) {
+    //             if (nums[l] == 0)
+    //                 count--;
+    //             l++;
+    //         }
+    //         maxLen = Math.max(r - l + 1, maxLen);
+    //     }
+    //     return maxLen;
+    // }
 }
