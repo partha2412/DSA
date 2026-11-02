@@ -14,7 +14,6 @@ class Solution {
     //     // }
     //     // return max;
 
-
     //     // using index map
     //     // Map<Character, Integer> map = new HashMap<>();
     //     // int max = 0;
@@ -29,7 +28,6 @@ class Solution {
     //     //     max = Math.max(max, right - left + 1);
     //     // }
     //     // return max;
-
 
     //     //using general for-while loop
     //     // Set<Character> set = new HashSet<>();
@@ -46,8 +44,6 @@ class Solution {
     //     // }
     //     // return size;
 
-
-
     //     // using index map
     //     Map <Character, Integer> map = new HashMap<>();
     //     int tot = 0;
@@ -61,9 +57,6 @@ class Solution {
     //         tot = Math.max(tot,r-l+1);
     //     }
     //     return tot;
-
-
-
 
     //     // for(int i=0;i<s.length();i++){
     //     //     Character c = s.charAt(i);
@@ -90,20 +83,31 @@ class Solution {
     //     return max;
     // }
 
+    // public int lengthOfLongestSubstring(String s) {
+    //     int[] ch = new int[265];
+    //     int max=0,count=0,j=0;
+    //     for(int i=0;i<s.length();i++){
+    //         char c = s.charAt(i);
+    //         count++;
+    //         ch[c]++;
+    //         while(ch[c]>1){
+    //             ch[s.charAt(j)]--;
+    //             count--;
+    //             j++;
+    //         }
+    //         max = Math.max(max, count);
+    //     }
+    //     return max;
+    // }
+
     public int lengthOfLongestSubstring(String s) {
-        int[] ch = new int[265];
-        int max=0,count=0,j=0;
+        int j=0,max=0;
+        int[] last = new int[128];
         for(int i=0;i<s.length();i++){
             char c = s.charAt(i);
-            
-            count++;
-            ch[c]++;
-            while(ch[c]>1){
-                ch[s.charAt(j)]--;
-                count--;
-                j++;
-            }
-            max = Math.max(max, count);
+            j = Math.max(j, last[c]);
+            max = Math.max(max, i-j+1);
+            last[c]=i+1;
         }
         return max;
     }
