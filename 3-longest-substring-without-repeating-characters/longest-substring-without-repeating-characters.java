@@ -72,20 +72,38 @@ class Solution {
     //     //     }
     //     // }
     // }
+    // public int lengthOfLongestSubstring(String s) {
+    //     int j=0;
+    //     int max = 0;
+    //     Set<Character> set = new HashSet<>();
+    //     for(int i=0;i<s.length();i++){
+    //         char c = s.charAt(i);
+    //         while(set.contains(c)){
+    //             char cj = s.charAt(j);
+    //             set.remove(cj);
+    //             j++;
+    //         }
+    //         set.add(c);
+    //         int size = set.size();
+    //         max = Math.max(max, size);
+    //     }
+    //     return max;
+    // }
+
     public int lengthOfLongestSubstring(String s) {
-        int j=0;
-        int max = 0;
-        Set<Character> set = new HashSet<>();
+        int[] ch = new int[265];
+        int max=0,count=0,j=0;
         for(int i=0;i<s.length();i++){
             char c = s.charAt(i);
-            while(set.contains(c)){
-                char cj = s.charAt(j);
-                set.remove(cj);
+            
+            count++;
+            ch[c]++;
+            while(ch[c]>1){
+                ch[s.charAt(j)]--;
+                count--;
                 j++;
             }
-            set.add(c);
-            int size = set.size();
-            max = Math.max(max, size);
+            max = Math.max(max, count);
         }
         return max;
     }
