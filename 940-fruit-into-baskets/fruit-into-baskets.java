@@ -24,7 +24,7 @@ class Solution {
         Map<Integer,Integer> map = new HashMap<>();
         for(int r=0;r<fruit.length;r++){
             map.put(fruit[r], map.getOrDefault(fruit[r], 0)+1);
-            while(map.size()>2){
+            while(map.size()>2){ 
                 map.put(fruit[l],map.get(fruit[l])-1);
                 if(map.get(fruit[l])==0){
                     map.remove(fruit[l]);
