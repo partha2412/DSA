@@ -15,9 +15,7 @@ class Solution {
         for(int r=0;r<nums.length;r++){
             if(nums[r]!=nums[l]){
                 l++;
-                int t = nums[l];
                 nums[l] = nums[r];
-                nums[r] = t;
             }
         }
         return l+1;
