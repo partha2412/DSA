@@ -17,11 +17,10 @@ class Solution {
         for(int n:nums){
             helper[n] = 1;
         }
-        int ans=-1;
         for(int i=0; i<helper.length; i++){
             if(helper[i]==0)
-                ans = i;
+                return i;
         }
-        return ans;
+        return -1;
     }
 }
